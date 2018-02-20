@@ -1,5 +1,5 @@
 from keras import backend as K
-from keras.initializations import zero
+from keras.initializers import zero
 from keras.engine import InputSpec
 from keras.models import Sequential
 from keras.layers import LSTM, activations, Wrapper, Recurrent, Layer
@@ -28,7 +28,7 @@ class Attention(Layer):
         nb_samples, nb_time, nb_dims = self.dec_shape
         l0 = self.layers[0]
 
-        out_shape = self.get_output_shape_for(input_shape)
+        out_shape = self.get_output_shape_at(input_shape)
         for layer in self.layers:
             if not layer.built: layer.build(out_shape)
 
@@ -49,8 +49,8 @@ class Attention(Layer):
         super(Attention, self).build(input_shape)
 
 
-    def get_output_shape_for(self, input_shape):
-        return self.layers[0].get_output_shape_for(input_shape[1])
+    def get_output_shape_at(self, input_shape):
+        return self.layers[0].get_output_shape_at(input_shape[1])
 
 
     def step(self, x, states):

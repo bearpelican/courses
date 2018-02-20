@@ -11,7 +11,8 @@ from IPython.display import display, Audio
 from numpy.random import normal
 from gensim.models import word2vec
 from keras.preprocessing.text import Tokenizer
-from nltk.tokenize import ToktokTokenizer, StanfordTokenizer
+from nltk.tokenize import ToktokTokenizer
+from nltk.tokenize.stanford import StanfordTokenizer
 from functools import reduce
 from itertools import chain
 
